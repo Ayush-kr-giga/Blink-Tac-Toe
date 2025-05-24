@@ -65,6 +65,8 @@ const Game = ({ players, markers })=>{
 
                 })
                 console.log(winner)
+                const audio = new Audio('/victorymale-version-230553.mp3'); 
+                audio.play();
                 return;
               }
             }
@@ -171,7 +173,7 @@ const Game = ({ players, markers })=>{
                         {val}
                     </button>
                     ))}
-            <p className="text-white w-[400px] text-xl">
+            <p className="text-white w-[400px] text-center text-2xl mt-10">
                  {players.p1} ({score.p1}) vs {players.p2} ({score.p2})
             </p>
             </div>
