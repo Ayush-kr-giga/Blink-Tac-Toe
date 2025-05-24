@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WinnerPopup = ({ winnerName, onReplay }) => {
+const WinnerPopUp = ({ winnerName, onReplay }) => {
   return (
     <div className="fixed inset-0  flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-sm w-full">
@@ -16,4 +16,4 @@ const WinnerPopup = ({ winnerName, onReplay }) => {
   );
 };
 
-export default WinnerPopup;
+export default WinnerPopUp;

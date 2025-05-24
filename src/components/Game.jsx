@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import WinnerPopup from "./WinnerPopUp"
+import WinnerPopUp from "./WinnerPopUp"
 
 const Game = ({ players, markers })=>{
 
@@ -177,7 +177,7 @@ const Game = ({ players, markers })=>{
                  {players.p1} ({score.p1}) vs {players.p2} ({score.p2})
             </p>
             </div>
-            {winner && <WinnerPopup winnerName={winner} onReplay={resetGame} />}
+            {winner && <WinnerPopUp winnerName={winner} onReplay={resetGame} />}
 
         </div>
     )
