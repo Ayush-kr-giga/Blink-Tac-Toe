@@ -9,12 +9,19 @@ function App() {
 
   const [showRules,changeShowRules]=useState(false);
   const [isPlaying,setIsPlaying]=useState(false);
+  const categories={
+    Animal:["🐶","🐱","🐵","🐷"],
+    Food:["🍔","🍟","🍕","🍗"],
+    Sports:["⚽️","🏀","🎱","🏐"]
+  }
+  const [players,changePlayers]=useState({p1:"Player1",p2:"Player2"})
+  const [markers,changeMarkers]=useState({p1:"",p2:[]})
 
   return (
     <>
      {!isPlaying && !showRules&& <Home changeShowRules={changeShowRules} setIsPlaying={setIsPlaying}/>}
-     {showRules&&<Rules  changeShowRules={changeShowRules}/>}
-     {isPlaying&&<Play/>}
+     {showRules&&<Rules changeShowRules={changeShowRules}/>}
+     {isPlaying&&<Play players={players} changePlayers={changePlayers} categories={categories} markers={markers} changeMarkers={changeMarkers}/>}
     </>
   )
 }
