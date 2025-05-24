@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 
-const Play = ({players,changePlayers,categories,markers,changeMarkers}) => {
+const Play = ({players,changePlayers,categories,markers,changeMarkers,setStart}) => {
 
-    let selection=Object.keys(categories)
+    // let selection=Object.keys(categories)
+    let [selection,setSelection]=useState(Object.keys(categories))
     // console.log(selection)
 
     const [player1,setPlayer1]=useState("")
@@ -15,8 +16,8 @@ const Play = ({players,changePlayers,categories,markers,changeMarkers}) => {
             p1:categories[player1]
             
         }))
-        let idx = selection.indexOf(player1)
-        selection.splice(idx,1)
+
+        setSelection((prev)=>prev.filter((el)=>el!==player1))
         console.log(selection)
         // console.log(markers)
 
@@ -31,6 +32,7 @@ const Play = ({players,changePlayers,categories,markers,changeMarkers}) => {
         }))
 
         console.log(markers)
+        setStart((prev)=>!prev)
     }
 
     return (

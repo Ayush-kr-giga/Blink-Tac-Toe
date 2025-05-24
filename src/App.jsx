@@ -3,12 +3,16 @@ import './App.css'
 import Home from './components/Home'
 import Rules from './components/Rules'
 import Play from './components/Play';
+import Game from './components/Game';
 
 
 function App() {
 
   const [showRules,changeShowRules]=useState(false);
   const [isPlaying,setIsPlaying]=useState(false);
+  const [start,setStart]=useState(false);
+  const [showWinner,setShowWinner]=useState(false)
+
   const categories={
     Animal:["🐶","🐱","🐵","🐷"],
     Food:["🍔","🍟","🍕","🍗"],
@@ -21,7 +25,9 @@ function App() {
     <>
      {!isPlaying && !showRules&& <Home changeShowRules={changeShowRules} setIsPlaying={setIsPlaying}/>}
      {showRules&&<Rules changeShowRules={changeShowRules}/>}
-     {isPlaying&&<Play players={players} changePlayers={changePlayers} categories={categories} markers={markers} changeMarkers={changeMarkers}/>}
+     {!start&&isPlaying&&<Play players={players} changePlayers={changePlayers} categories={categories} markers={markers} changeMarkers={changeMarkers} setStart={setStart} />}
+     {!showWinner&&start && <Game players={players}  markers={markers} setShowWinner={setShowWinner}/>}
+     
     </>
   )
 }
