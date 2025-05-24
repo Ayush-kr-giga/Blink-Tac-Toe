@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import WinnerPopup from "./WinnerPopUp"
 
 const Game = ({ players, markers })=>{
 
@@ -10,7 +11,18 @@ const Game = ({ players, markers })=>{
     let [player2Marks,setPlayer2Marks]=useState({})
     let [player2Moves,setPlayer2Moves]=useState([])
 
+    let [score,setScore]=useState({p1:0,p2:0})
+
     const [winner, setWinner] = useState(null);
+
+    const resetGame = () => {
+        setBoard(["", "", "", "", "", "", "", "", ""]);
+        setPlayer1Moves([]);
+        setPlayer2Moves([]);
+        setWinner(null);
+        setNextPlayer(true);
+      };
+      
 
     const winningCombos = [
         [0, 1, 2],
@@ -40,12 +52,18 @@ const Game = ({ players, markers })=>{
         })
 
 
-        const checkWin = (moves, playerName) => {
+        const checkWin = (moves, playerName,p) => {
             if (moves.length < 3) return;
       
             for (let combo of winningCombos) {
               if (combo.every((i) => moves.includes(i))) {
                 setWinner(playerName);
+                setScore((prev)=>{
+                    let newScore={...prev}
+                    newScore[p]=newScore[p]+1
+                    return newScore
+
+                })
                 console.log(winner)
                 return;
               }
@@ -54,10 +72,10 @@ const Game = ({ players, markers })=>{
       
           if (nextPlayer) {
             // Just played was Player 2
-            checkWin(player2Moves, players.p2);
+            checkWin(player2Moves, players.p2,"p2");
           } else {
             // Just played was Player 1
-            checkWin(player1Moves, players.p1);
+            checkWin(player1Moves, players.p1,"p1");
           }
 
     },[nextPlayer])
@@ -139,7 +157,9 @@ const Game = ({ players, markers })=>{
             <h2 className="text-4xl font-bold text-white mb-4">Game Started!</h2>
             <p className="text-white text-xl">{players.p1} ({markers.p1}) vs {players.p2} ({markers.p2})</p>
 
-
+            <h1 className="text-4xl font-bold text-yellow-400 mt-10 mb-5"
+            
+            >{nextPlayer? `${players.p1}'s turn`: `${players.p2}'s turn`}</h1>
             <div className="grid grid-cols-3 gap-2 mt-8 w-full max-w-sm mx-auto ">
 
                 {board.map((val, i) => (
@@ -151,8 +171,12 @@ const Game = ({ players, markers })=>{
                         {val}
                     </button>
                     ))}
-
+            <p className="text-white w-[400px] text-xl">
+                 {players.p1} ({score.p1}) vs {players.p2} ({score.p2})
+            </p>
             </div>
+            {winner && <WinnerPopup winnerName={winner} onReplay={resetGame} />}
+
         </div>
     )
 }
