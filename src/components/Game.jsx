@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import WinnerPopUp from "./WinnerPopUp"
+import WinnerPopUp from "./WinnerPopup"
 
 const Game = ({ players, markers })=>{
 
