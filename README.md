@@ -4,13 +4,6 @@ Blink Tac Toe is a modern twist on classic Tic Tac Toe, featuring emoji-based ga
 
 ---
 
-## 🚀 Live Demo
-Add hosted link here
-
-## 📦 Source Code
-Add repository link here
-
----
 
 ## 🧠 About the Game
 Blink Tac Toe enhances traditional Tic Tac Toe by introducing emoji categories, random emoji assignment, and a dynamic board where older moves disappear. Each player can have only **3 emojis active** on the grid, making the gameplay strategic and time-based.
@@ -39,7 +32,6 @@ Players choose a category before starting:
 - Animals: 🐶 🐱 🐵 🐰  
 - Food: 🍕 🍟 🍔 🍩  
 - Sports: ⚽️ 🏀 🏈 🎾  
-- (You can add your own categories.)
 
 Each turn assigns a **random emoji** from the player’s selected category.
 
